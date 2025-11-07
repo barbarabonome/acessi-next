@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    overflow-x: hidden; /* só o scroll lateral bloqueado */
+    overflow-y: auto;   /* deixa o scroll vertical */
+    min-height: 100%;
+  }
+
+  body {
+    padding-right: 0 !important;
+}
+
+body > div[vw] {
+    position: fixed !important;
+    z-index: 9999 !important;
+  }
+  
+/* Força o botão do VLibras a aparecer visível por cima de tudo */
+body > div[vw] {
+    position: fixed !important;
+    z-index: 99999 !important;
+    visibility: visible !important;
+    display: block !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: auto !important;
+    height: auto !important;
+    all: unset;
+  }
+
+
