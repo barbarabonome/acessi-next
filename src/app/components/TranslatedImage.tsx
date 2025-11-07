@@ -5,12 +5,13 @@ import { useEffect, useMemo, useState } from "react";
 
 type Locale = "pt" | "en" | "es";
 
-// repare no `alt?: string` aqui 👇
 type Props = Omit<ImageProps, "src" | "alt"> & {
+  /** Caminhos da imagem por idioma */
   srcByLang: Record<Locale, string>;
+  /** alt por idioma (opcional) */
   altByLang?: Partial<Record<Locale, string>>;
+  /** fallback quando não detectar cookie */
   fallback?: Locale;
-  alt?: string;
 };
 
 /** Lê o cookie do GTranslate (ex.: "/pt/en", "/auto/es") e retorna "pt" | "en" | "es" */
@@ -30,14 +31,14 @@ function useGTranslateLocale(pollMs = 800): Locale {
   const [loc, setLoc] = useState<Locale>("pt");
 
   useEffect(() => {
-    try {
-      setLoc(readGTranslateLocale());
-    } catch {}
+    // leitura inicial
+    try { setLoc(readGTranslateLocale()); } catch {}
 
+    // observa mudanças (poll simples é o mais robusto pro widget)
     const id = setInterval(() => {
       try {
         const cur = readGTranslateLocale();
-        setLoc((prev) => (prev === cur ? prev : cur));
+        setLoc(prev => (prev === cur ? prev : cur));
       } catch {}
     }, pollMs);
 
@@ -60,12 +61,11 @@ export default function TranslatedImage({
   );
 
   const src = srcByLang[lang] ?? srcByLang[fallback];
-
   const alt =
-    altByLang?.[lang] ??
-    altByLang?.[fallback] ??
-    imgProps.alt ??
-    "image";
+    (altByLang?.[lang] ??
+      altByLang?.[fallback] ??
+      imgProps.alt ??
+      "image") as string;
 
   return <Image {...imgProps} src={src} alt={alt} />;
 }
