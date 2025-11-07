@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // adicionado para redirecionamento
 
 // Função auxiliar para extrair o ID do token JWT
 function obterIdDoToken(token: string): number | null {
   try {
-    const payloadBase64 = token.split('.')[1];
+    const payloadBase64 = token.split(".")[1];
     const payloadJson = atob(payloadBase64);
     const payload = JSON.parse(payloadJson);
     return parseInt(payload.sub); // ID do usuário
@@ -18,11 +18,11 @@ function obterIdDoToken(token: string): number | null {
 
 export default function AtualizarCadastro() {
   const router = useRouter(); // inicializa o hook de navegação
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmaSenha, setConfirmaSenha] = useState('');
-  const [erro, setErro] = useState('');
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [erro, setErro] = useState("");
   const [editando, setEditando] = useState(false);
 
   // Carregar dados do usuário ao montar
@@ -50,10 +50,10 @@ export default function AtualizarCadastro() {
 
     try {
       //const response = await fetch(`http://localhost:8080/usuario/${id}`);
-      const response = await fetch(`https://quarkus-teste-production-5988.up.railway.app/usuario/${id}`, {
+      const response = await fetch(`http://localhost:8080/usuario/${id}`, {
         headers: {
-          "Authorization": token
-        }
+          Authorization: token,
+        },
       });
 
       if (response.ok) {
@@ -61,11 +61,11 @@ export default function AtualizarCadastro() {
         setNome(data.nome);
         setEmail(data.email);
       } else {
-        setErro('Erro ao carregar os dados do usuário.');
+        setErro("Erro ao carregar os dados do usuário.");
       }
     } catch (error) {
-      console.error('Erro ao carregar os dados:', error);
-      setErro('Erro na requisição');
+      console.error("Erro ao carregar os dados:", error);
+      setErro("Erro na requisição");
     }
   };
 
@@ -86,7 +86,7 @@ export default function AtualizarCadastro() {
       nome,
       email,
       senha,
-      confirmaSenha
+      confirmaSenha,
     });
 
     try {
@@ -94,9 +94,9 @@ export default function AtualizarCadastro() {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": token
+          Authorization: token,
         },
-        body: bodyContent
+        body: bodyContent,
       });
 
       const data = await response.text();
@@ -125,7 +125,10 @@ export default function AtualizarCadastro() {
         <div className="space-y-6">
           {/* Nome */}
           <div className="flex justify-between items-center">
-            <label htmlFor="txtNome" className="block text-gray-700 dark:text-white font-medium">
+            <label
+              htmlFor="txtNome"
+              className="block text-gray-700 dark:text-white font-medium"
+            >
               Nome Completo
             </label>
             <button
@@ -138,7 +141,9 @@ export default function AtualizarCadastro() {
           </div>
 
           {!editando ? (
-            <p className="text-gray-700 dark:text-white">{nome || 'Nenhum nome definido'}</p>
+            <p className="text-gray-700 dark:text-white">
+              {nome || "Nenhum nome definido"}
+            </p>
           ) : (
             <input
               type="text"
@@ -152,13 +157,18 @@ export default function AtualizarCadastro() {
 
           {/* E-mail */}
           <div className="flex justify-between items-center">
-            <label htmlFor="txtEmail" className="block text-gray-700 dark:text-white font-medium">
+            <label
+              htmlFor="txtEmail"
+              className="block text-gray-700 dark:text-white font-medium"
+            >
               E-mail
             </label>
           </div>
 
           {!editando ? (
-            <p className="text-gray-700 dark:text-white">{email || 'Nenhum e-mail definido'}</p>
+            <p className="text-gray-700 dark:text-white">
+              {email || "Nenhum e-mail definido"}
+            </p>
           ) : (
             <input
               type="text"
@@ -172,7 +182,10 @@ export default function AtualizarCadastro() {
 
           {/* Senha */}
           <div className="flex justify-between items-center">
-            <label htmlFor="txtCriarSenha" className="block text-gray-700 dark:text-white font-medium">
+            <label
+              htmlFor="txtCriarSenha"
+              className="block text-gray-700 dark:text-white font-medium"
+            >
               Digite sua nova senha
             </label>
           </div>
@@ -187,7 +200,10 @@ export default function AtualizarCadastro() {
 
           {/* Confirmar Senha */}
           <div className="flex justify-between items-center">
-            <label htmlFor="txtConfirmarSenha" className="block text-gray-700 dark:text-white font-medium">
+            <label
+              htmlFor="txtConfirmarSenha"
+              className="block text-gray-700 dark:text-white font-medium"
+            >
               Confirme a sua nova senha
             </label>
           </div>
