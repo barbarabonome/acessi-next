@@ -30,11 +30,14 @@ export default function Login() {
         });
 
         //const response = await fetch("https://quarkus-teste-production-5988.up.railway.app/usuario/login", {
-        const response = await fetch("http://localhost:8080/usuario/login", {
-          method: "POST",
-          body: bodyContent,
-          headers: headersList,
-        });
+        const response = await fetch(
+          "acessi-next-java-production.up.railway.app/usuario/login",
+          {
+            method: "POST",
+            body: bodyContent,
+            headers: headersList,
+          }
+        );
 
         const data = await response.json();
 
@@ -55,7 +58,6 @@ export default function Login() {
 
   return (
     <main className="flex flex-col items-center mt-10">
-
       <form
         method="post"
         encType="multipart/form-data"

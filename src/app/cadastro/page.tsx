@@ -31,7 +31,7 @@ export default function Cadastro() {
 
     try {
       const response = await fetch("http://localhost:8080/usuario/cadastro", {
-      //const response = await fetch("https://quarkus-teste-production-5988.up.railway.app/usuario/cadastro", {
+      //const response = await fetch("acessi-next-java-production.up.railway.app/usuario/cadastro", {
         method: "POST",
         body: bodyContent,
         headers: headersList,

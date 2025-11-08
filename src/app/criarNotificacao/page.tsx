@@ -92,7 +92,7 @@ export default function CriarNotificacao() {
 
     try {
       //const resposta = await fetch("https://quarkus-teste-production-5988.up.railway.app/notificacao/criar", {
-      const resposta = await fetch("http://localhost:8080/notificacao/criar", {
+      const resposta = await fetch("acessi-next-java-production.up.railway.app/notificacao/criar", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
