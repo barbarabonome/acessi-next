@@ -31,7 +31,7 @@ export default function Login() {
 
         //const response = await fetch("https://quarkus-teste-production-5988.up.railway.app/usuario/login", {
         const response = await fetch(
-          "acessi-next-java-production.up.railway.app/usuario/login",
+          "https://acessi-next-java-production.up.railway.app/usuario/login",
           {
             method: "POST",
             body: bodyContent,

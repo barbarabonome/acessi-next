@@ -38,9 +38,9 @@ export default function PaginaInicial() {
 
   const buscarNotificacoes = async () => {
     try {
-      //const response = await fetch("https://quarkus-teste-production-5988.up.railway.app/notificacao/listar");
+      //const response = await fetch("https://acessi-next-java-production.up.railway.app/notificacao/listar");
       const response = await fetch(
-        "acessi-next-java-production.up.railway.app/notificacao/listar"
+        "https://acessi-next-java-production.up.railway.app/notificacao/listar"
       );
       const data = await response.json();
 

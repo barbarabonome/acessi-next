@@ -29,7 +29,7 @@ export default function GerenciarNotificacao() {
   const buscarNotificacoes = async () => {
     try {
       //const response = await fetch("https://quarkus-teste-production-5988.up.railway.app/notificacao/listar");
-      const response = await fetch("acessi-next-java-production.up.railway.app/notificacao/listar");
+      const response = await fetch("https://acessi-next-java-production.up.railway.app/notificacao/listar");
       const data = await response.json();
 
       const notificacoesComEstilo = data.map((n: Notificacao) => {
@@ -100,7 +100,7 @@ export default function GerenciarNotificacao() {
         linha: editandoNotificacao.linha,
       };
 
-      const response = await fetch(`https://quarkus-teste-production-5988.up.railway.app/notificacao/${editandoId}`, {
+      const response = await fetch(`https://acessi-next-java-production.up.railway.app/notificacao/${editandoId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -138,7 +138,7 @@ export default function GerenciarNotificacao() {
     if (!notificacaoParaDeletar) return;
 
     try {
-      const response = await fetch(`https://quarkus-teste-production-5988.up.railway.app/notificacao/${notificacaoParaDeletar}`, {
+      const response = await fetch(`https://acessi-next-java-production.up.railway.app/notificacao/${notificacaoParaDeletar}`, {
         method: "DELETE",
       });
 

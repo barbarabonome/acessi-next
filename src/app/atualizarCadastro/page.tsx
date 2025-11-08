@@ -50,7 +50,7 @@ export default function AtualizarCadastro() {
 
     try {
       //const response = await fetch(`http://localhost:8080/usuario/${id}`);
-      const response = await fetch(`acessi-next-java-production.up.railway.app/usuario/${id}`, {
+      const response = await fetch(`https://acessi-next-java-production.up.railway.app/usuario/${id}`, {
         headers: {
           Authorization: token,
         },
@@ -90,7 +90,7 @@ export default function AtualizarCadastro() {
     });
 
     try {
-      const response = await fetch(`acessi-next-java-production.up.railway.app/usuario/${id}`, {
+      const response = await fetch(`https://acessi-next-java-production.up.railway.app/usuario/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
