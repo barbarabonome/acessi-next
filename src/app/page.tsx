@@ -39,7 +39,9 @@ export default function PaginaInicial() {
   const buscarNotificacoes = async () => {
     try {
       //const response = await fetch("https://quarkus-teste-production-5988.up.railway.app/notificacao/listar");
-      const response = await fetch("http://localhost:8080/notificacao/listar");
+      const response = await fetch(
+        "acessi-next-java-production.up.railway.app/notificacao/listar"
+      );
       const data = await response.json();
 
       const notificacoesComEstilo = data.map((n: Notificacao) => {
@@ -140,8 +142,8 @@ export default function PaginaInicial() {
       {/* Frase */}
       <div className="text-center font-bold text-xl sm:text-2xl lg:text-3xl transition-opacity">
         <p className="mt-16 mb-8 text-gray-800 dark:text-white">
-          Acessi é <span className="text-yellow-500">acessibilidade</span> para todos e{" "}
-          <span className="text-green-600">inovação</span> para o mundo.
+          Acessi é <span className="text-yellow-500">acessibilidade</span> para
+          todos e <span className="text-green-600">inovação</span> para o mundo.
         </p>
       </div>
 
