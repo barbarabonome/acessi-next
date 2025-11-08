@@ -72,7 +72,7 @@ export default function ChatCeci() {
     (async () => {
       try {
         const res = await fetch(
-          "http://ceci-next-production.up.railway.app/ceci/historico",
+          "https://ceci-next-production.up.railway.app/ceci/historico",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -119,7 +119,7 @@ export default function ChatCeci() {
 
   useEffect(() => {
     socket.current = new WebSocket(
-      "ws://ceci-next-production.up.railway.app/ws/ceci"
+      "wss://ceci-next-production.up.railway.app/ws/ceci"
     );
 
     socket.current.onopen = () => {
@@ -225,7 +225,7 @@ export default function ChatCeci() {
 
     try {
       const response = await fetch(
-        `http://ceci-next-production.up.railway.app/reports/download/${filename}`,
+        `https://ceci-next-production.up.railway.app/reports/download/${filename}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -282,7 +282,7 @@ export default function ChatCeci() {
 
     try {
       const response = await fetch(
-        "http://ceci-next-production.up.railway.app/reports/list",
+        "https://ceci-next-production.up.railway.app/reports/list",
         {
           headers: {
             Authorization: `Bearer ${token}`,
